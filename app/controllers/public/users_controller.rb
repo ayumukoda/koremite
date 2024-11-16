@@ -1,9 +1,9 @@
-class UsersController < ApplicationController
+class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images
+    @post_images = @user.post_images.page(params[:page])
   end
 
   def edit

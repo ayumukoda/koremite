@@ -5,6 +5,7 @@
     <%= link_to post_image_path(post_image.id) do %>
       <%= image_tag post_image.get_image, class: "card-img-top"; %>
     <% end %>
+    
     <!--link_toでリンク先を指定/post_image/:idでリンクができる-->
     <!--doからendがaタグで囲まれた状態になる結果aタグに囲まれたimgタグになる-->
     <div class="card-body">

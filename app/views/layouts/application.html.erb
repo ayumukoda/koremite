@@ -13,9 +13,9 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <a class>ここでこんなもの見つけた</a>
+          <%= link_to "ここでこんなもの見つけた", root_path %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,21 +23,42 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %><!--deviseのヘルパーメゾットログイン済ならelseまで未ログインならelse以降が反映-->
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+            <li>
+            <%= link_to root_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-house"></i> Home
+            <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to '投稿フォーム', new_post_image_path, class: 'nav-link text-dark' %>
+            <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-right-from-bracket"></i> Log out
+            <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+            <li>
+            <%= link_to new_post_image_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-hashtag"></i> Post
+            <% end %>
+            </li>
+            
+            <li>
+              <%= link_to user_path(current_user.id), class: "nav-link text-light" do %>
+              <i class="fa-solid fa-user"></i> User
+            <% end %>
             </li>
             <% else %>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+            <li>
+            <%= link_to root_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-house"></i> Home
+            <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+            <li>
+            <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-user-plus"></i> Sign up
+            <% end %>
+            </li>
+            <li>
+            <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+              <i class="fa-solid fa-right-to-bracket"></i> Log in
+            <% end %>
             </li>
             <% end %>
             </ul>
