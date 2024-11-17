@@ -14,7 +14,7 @@ class User < ApplicationRecord
   
   def get_profile_image(width,height)
     unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
       #メソッドの内容は画像が設定されない場合no_image.jpgをデフォルト画像で表示させるというもの
     end

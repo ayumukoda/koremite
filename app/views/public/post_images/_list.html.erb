@@ -1,7 +1,7 @@
-<div class="card-list-container py-5">
+
   <% post_images.each do |post_image| %>
   <!--@を外す部分テンプレートではviewから渡される変数を使えるようにする為にローカル変数にする-->
-  <div class="card w-50 mx-auto mt-4 shadow-lg">
+  <div class="card mx-auto mt-4 shadow-lg">
     <%= link_to post_image_path(post_image.id) do %>
       <%= image_tag post_image.get_image, class: "card-img-top"; %>
     <% end %>
@@ -10,10 +10,10 @@
     <!--doからendがaタグで囲まれた状態になる結果aタグに囲まれたimgタグになる-->
     <div class="card-body">
       <div class="row">
-        <div class="col-2">
-          <%= image_tag post_image.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %>
+        <div class="col-3">
+          <%= image_tag post_image.user.get_profile_image(100,100), class: "mt-3 rounded-circle img-fluid" %>
         </div>
-        <div class="col-10">
+        <div class="col-9">
           <p class="card-title">
             <%= link_to(post_image_path(post_image.id), class: "text-dark") do %>
               <strong><i class="far fa-flag"></i><span> <%= post_image.shop_name %></span></strong>
@@ -28,4 +28,3 @@
   </div>
   <% end %>
   <%= paginate post_images %>
-</div>

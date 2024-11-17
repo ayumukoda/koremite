@@ -1,24 +1,31 @@
 <!--ユーザーの詳細-->
-<div>
+<div class="row">
+  <div class="col-md-3">
     <h3>User Info</h3>
     <%= image_tag @user.get_profile_image(100,100) %>
     <table class="table">
-        <tbody>
-          <tr>
-            <th>name</th>
-            <th><%= @user.name %></th>
-          </tr>
-        </tbody>
+      <tbody>
+        <tr>
+          <th>name</th>
+          <th><%= @user.name %></th>
+        </tr>
+      </tbody>
     </table>
     <% if @user == current_user %>
+      <%= link_to edit_user_path, class: 'btn btn-outline-secondary btn-block' do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-9">
     <div class="row">
-<%= link_to edit_user_path, class: 'btn btn-outline-secondary btn-block' do %>
-   <i class="fas fa-user-cog"></i>
-<% end %>
-<% end %>
+      <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <%= render 'public/post_images/list', post_images: @post_images %>
+      </div>
+    </div>
+  </div>
 </div>
-
 <!--ユーザーの投稿一覧-->
-<%= render 'public/post_images/list', post_images: @post_images %>
+
 <!--renderで部分テンプレートを呼び出せるアンダースコアは省略できる-->
 <!--ローカル変数（'post_images'）に渡すインスタンス変数（@post_images）を指定する-->
